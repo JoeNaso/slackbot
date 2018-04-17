@@ -1,7 +1,5 @@
 import os
 
-from slackclient import SlackClient
-
 
 class BaseConfig(object):
     """

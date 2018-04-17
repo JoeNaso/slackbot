@@ -10,7 +10,7 @@ def get_all_user_names(channel_id):
             for d in data['members']]
 
 
-def parse_text(text):
+def parse_text(message, channel, username):
     """
     Read local csv and determine all statuses
     """

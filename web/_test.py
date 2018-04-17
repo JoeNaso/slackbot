@@ -21,11 +21,13 @@ def channel_info(channel_id):
 
 
 def get_all_user_names(channel_id):
+    """
+    Gets tuples of username, full name
+    """
     data = slack_client.api_call('users.list')
-    print(data['members'][0].keys())
     return [(d['name'],
-             d['profile']['real_name_normalized'])
-             for d in data['members']]
+            d['profile']['real_name_normalized'])
+            for d in data['members']]
 
 
 def send_message(channel_id, message):
