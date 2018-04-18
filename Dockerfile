@@ -1,5 +1,5 @@
 FROM python:3
-MAINTAINER Joe Naso <
+MAINTAINER Joe Naso
 
 COPY ./requirements.txt config/pip.txt
 RUN pip install --upgrade pip && \
