@@ -7,4 +7,11 @@ services:
       ports:
         - "5000:5000"
       env_file:
-        - ./variables.env
+        - ./docker-config/flavors/variables.env
+      volumes:
+        - ./web/:/home/docker/slackbot/
+
+    redis:
+      container_name: cache
+      image: redis
+
