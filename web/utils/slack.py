@@ -7,7 +7,6 @@ slack_client = SlackClient(SLACK_TOKEN)
 
 def list_channels():
     channels_call = slack_client.api_call("channels.list")
-    print(channels_call)
     if channels_call.get('ok'):
         return channels_call['channels']
     return None
@@ -20,7 +19,7 @@ def channel_info(channel_id):
     return None
 
 
-def get_all_user_names(channel_id):
+def get_all_user_names():
     """
     Gets tuples of username, full name
     """
