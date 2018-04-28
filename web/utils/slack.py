@@ -1,25 +1,25 @@
-import os
-from slackclient import SlackClient
+"""
+Some general slack utils that all require the  slack client as an argument
 
-SLACK_TOKEN = os.environ.get('SLACK_OAUTH_TOKEN')
-slack_client = SlackClient(SLACK_TOKEN)
+Done to prevent circular imports
+"""
 
 
-def list_channels():
+def list_channels(slack_client):
     channels_call = slack_client.api_call("channels.list")
     if channels_call.get('ok'):
         return channels_call['channels']
     return None
 
 
-def channel_info(channel_id):
+def channel_info(slack_client, channel_id):
     channel_info = slack_client.api_call("channels.info", channel=channel_id)
     if channel_info:
         return channel_info['channel']
     return None
 
 
-def get_all_user_names():
+def get_all_user_names(slack_client):
     """
     Gets tuples of username, full name
     """
@@ -29,7 +29,7 @@ def get_all_user_names():
             for d in data['members']]
 
 
-def send_message(channel_id, message):
+def send_message(slack_client, channel_id, message):
     res = slack_client.api_call(
         "chat.postMessage",
         channel=channel_id,

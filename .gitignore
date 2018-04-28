@@ -10,6 +10,7 @@ docker-config/flavors/variables.env
 *.o
 *.so
 *.pyc
+__pycache__/
 
 # Packages #
 ############
