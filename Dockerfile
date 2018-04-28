@@ -3,7 +3,9 @@ MAINTAINER Joe Naso
 
 COPY ./docker-config/requirements.txt config/pip.txt
 RUN pip3 install --upgrade pip && \
-    pip3 install -r config/pip.txt
+    pip3 install -r config/pip.txt && \
+    python3 -m spacy download en
+
 
 # Copy working dir
 COPY ./web/ /home/docker/slackbot/

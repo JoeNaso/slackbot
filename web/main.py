@@ -11,7 +11,6 @@ app.config.from_object(BaseConfig)
 
 slack_client = SlackClient(app.config['SLACK_WEBHOOK_SECRET'])
 
-users = {}
 
 @app.route('/slack', methods=['POST'])
 def incoming():

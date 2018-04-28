@@ -1,3 +1,10 @@
+"""
+Some general slack utils that all require the  slack client as an argument
+
+Done to prevent circular imports
+"""
+
+
 def list_channels(slack_client):
     channels_call = slack_client.api_call("channels.list")
     if channels_call.get('ok'):
@@ -22,7 +29,7 @@ def get_all_user_names(slack_client):
             for d in data['members']]
 
 
-def send_message(channel_id, message):
+def send_message(slack_client, channel_id, message):
     res = slack_client.api_call(
         "chat.postMessage",
         channel=channel_id,

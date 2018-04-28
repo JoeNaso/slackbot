@@ -3,9 +3,9 @@ import datetime
 import os
 import spacy
 
-from utils.slack import get_all_user_names
+from config import BaseConfig
 
-from web.app import config
+from .slack import get_all_user_names
 
 
 def _get_nlp():
@@ -34,7 +34,7 @@ def build_log_entry(app, username, full_name):
     """
     Takes app as an arg to avoid circular imports
     """
-    with open(os.path.join(config.APP_ROOT, 'data/test_data.csv'), 'a') as log:
+    with open(os.path.join(BaseConfig.APP_ROOT, 'data/test_data.csv'), 'a') as log:
         writer = csv.writer(log, delimiter=',')
         writer.write([username, full_name, True, datetime.datetime.today(), False])
     return
